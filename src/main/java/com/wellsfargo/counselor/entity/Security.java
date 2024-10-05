@@ -10,8 +10,8 @@ public class Security {
     @GeneratedValue()
     private long securityId;
 
-    @Column(nullable = false)
-    private long portfolioId;
+    @ManyToOne
+    private Portfolio portfolio;
 
     @Column(nullable = false)
     private String name;
@@ -31,8 +31,8 @@ public class Security {
     protected Security() {
     }
 
-    public Security(long portfolioId, String name, String category, int purchasePrice, Date purchaseDate, int quantity) {
-        this.portfolioId = portfolioId;
+    public Security(Portfolio portfolio, String name, String category, int purchasePrice, Date purchaseDate, int quantity) {
+        this.portfolio = portfolio;
         this.name = name;
         this.category = category;
         this.purchasePrice = purchasePrice;
@@ -44,12 +44,12 @@ public class Security {
         return securityId;
     }
 
-    public long getPortfolioId() {
-        return portfolioId;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setPortfolioId(long portfolioId) {
-        this.portfolioId = portfolioId;
+    public void setPortfolioId(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public String getName() {
